@@ -5,8 +5,10 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 
+app.set("view engine", "ejs"); // folder must be named views
+
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.render("index");
 });
 
 app.listen(PORT, () => {
