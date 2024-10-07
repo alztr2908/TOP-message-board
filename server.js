@@ -12,7 +12,7 @@ app.use("/", messageRouter);
 
 // 404 errors
 app.get("*", (req, res) => {
-  res.render("notFound");
+  res.render("pages/notFound");
 });
 
 const PORT = process.env.PORT || 3000;

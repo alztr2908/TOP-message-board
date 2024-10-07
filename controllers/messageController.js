@@ -2,7 +2,7 @@ let messages = require("./messageData.js");
 
 module.exports = {
   displayAllMessage: (req, res) => {
-    res.render("index", {
+    res.render("pages/index", {
       title: "Mini Messageboard",
       messages: messages,
     });
@@ -12,7 +12,7 @@ module.exports = {
     const message = messages.find((m) => m.id === id);
 
     if (message) {
-      res.render("message", {
+      res.render("pages/message", {
         message,
       });
     } else {
@@ -20,7 +20,7 @@ module.exports = {
     }
   },
   displayNewMessage: (req, res) => {
-    res.render("form");
+    res.render("pages/form");
   },
   getMessage: (req, res) => {
     const messageText = req.body.messageText;
