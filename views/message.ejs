@@ -6,18 +6,10 @@
     <title>TOP message board</title>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <br />
-    <a href="http://localhost:3000/new">Create new message?</a>
-    <br />
-    <% messages.forEach((message) => { %>
     <h1><%= message.text %></h1>
     <h2><%= message.user %></h2>
     <p><%= message.added %></p>
-    <a href="http://localhost:3000/message/<%= message.id %>">Details</a>
     <br />
-    <br />
-    <br />
-    <% }) %>
+    <a href="http://localhost:3000">Back to home</a>
   </body>
 </html>
