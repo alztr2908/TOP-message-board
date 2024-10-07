@@ -22,7 +22,14 @@ messageRouter.get("/", (req, res) => {
 });
 
 messageRouter.get("/new", (req, res) => {
-  res.send("hello world");
+  res.render("form");
+});
+
+messageRouter.post("/new", (req, res) => {
+  const messageText = req.body.messageText;
+  const messageUser = req.body.messageUser;
+  messages.push({ text: messageText, user: messageUser, added: new Date() });
+  res.redirect("/");
 });
 
 module.exports = messageRouter;
