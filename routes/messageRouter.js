@@ -15,7 +15,14 @@ const messages = [
 ];
 
 messageRouter.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", {
+    title: "Mini Messageboard",
+    messages: messages,
+  });
+});
+
+messageRouter.get("/new", (req, res) => {
+  res.send("hello world");
 });
 
 module.exports = messageRouter;
