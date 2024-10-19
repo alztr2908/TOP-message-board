@@ -10,4 +10,6 @@ messageRouter.get(
   messageController.displaySingleMessage
 );
 
+messageRouter.delete("/delete", messageController.deleteAllMessage);
+
 module.exports = messageRouter;

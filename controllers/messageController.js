@@ -34,4 +34,9 @@ module.exports = {
     console.log("Messages has been added");
     res.redirect("/");
   },
+  deleteAllMessage: async (req, res) => {
+    const messages = await db.deleteAllMessage();
+    console.log("All rows in messages table has been deleted");
+    res.redirect("/");
+  },
 };

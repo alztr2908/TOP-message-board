@@ -18,8 +18,13 @@ const insertMessage = async (content) => {
   );
 };
 
+const deleteAllMessage = async () => {
+  await pool.query("TRUNCATE messages");
+};
+
 module.exports = {
   getAllMessage,
   getSingleMessage,
   insertMessage,
+  deleteAllMessage,
 };
