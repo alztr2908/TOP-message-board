@@ -1,15 +1,19 @@
-let messages = require("./messageData.js");
+// let messages = require("./messageData.js");
+const db = require("../db/queries");
 
 module.exports = {
-  displayAllMessage: (req, res) => {
+  displayAllMessage: async (req, res) => {
+    const messages = await db.getAllMessage();
+
     res.render("pages/index", {
       title: "Mini Messageboard",
       messages: messages,
     });
   },
-  displaySingleMessage: (req, res, next) => {
+  displaySingleMessage: async (req, res, next) => {
     const id = parseInt(req.params.messageId);
-    const message = messages.find((m) => m.id === id);
+    const messageArray = await db.getSingleMessage(id);
+    const message = messageArray[0];
 
     if (message) {
       res.render("pages/message", {
@@ -19,18 +23,13 @@ module.exports = {
       next();
     }
   },
-  displayNewMessage: (req, res) => {
+  displayCreateMessage: (req, res) => {
     res.render("pages/form");
   },
-  getMessage: (req, res) => {
-    const messageText = req.body.messageText;
-    const messageUser = req.body.messageUser;
-    messages.push({
-      text: messageText,
-      user: messageUser,
-      added: new Date(),
-      id: messages.length + 1,
-    });
+  postCreateMessage: async (req, res) => {
+    const message = req.body;
+    await db.insertMessage(message);
+    console.log("Messages has been added");
     res.redirect("/");
   },
 };
