@@ -8,7 +8,8 @@ module.exports = new Pool({
   port: process.env.PGPORT,
 });
 
-const conString = `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`;
+// const conString = `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`;
+const conString = `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}`;
 
 module.exports = new Pool({
   connectionString: conString,
