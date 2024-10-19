@@ -28,6 +28,8 @@ module.exports = {
   },
   postCreateMessage: async (req, res) => {
     const message = req.body;
+    const added = new Date();
+    message["added"] = added.toString();
     await db.insertMessage(message);
     console.log("Messages has been added");
     res.redirect("/");
